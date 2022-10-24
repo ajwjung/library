@@ -1,4 +1,6 @@
 const container = document.querySelector(".container");
+const newBookBtn = container.querySelector("#new-book");
+const bookContainer = container.querySelector(".book-cards");
 
 let myLibrary = [];
 
@@ -42,7 +44,7 @@ function addCard(item) {
 
     newCard.style.border = "2px solid black";
 
-    container.appendChild(newCard);
+    bookContainer.appendChild(newCard);
 }
 
 // Temporary content for testing
