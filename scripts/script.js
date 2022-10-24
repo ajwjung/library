@@ -1,5 +1,6 @@
 const container = document.querySelector(".container");
 const newBookBtn = container.querySelector("#new-book");
+const bookForm = container.querySelector("form");
 const bookContainer = container.querySelector(".book-cards");
 
 let myLibrary = [];
@@ -46,6 +47,11 @@ function addCard(item) {
 
     bookContainer.appendChild(newCard);
 }
+
+// Toggle form visibility
+newBookBtn.addEventListener("click", function (e) {
+    bookForm.classList.toggle("hidden");
+})
 
 // Temporary content for testing
 const theHobbit = new Book(
