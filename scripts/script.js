@@ -32,7 +32,26 @@ function Book(title, author, pages, read) {
 
 function addBookToLibrary(title, author, pages, read) {
     let newBook = new Book(title, author, pages, read);
-    myLibrary.push(newBook);
+
+    if (checkBookExists(title.toLowerCase()) > 0) {
+        updateBookInformation(newBook);
+    } else {
+        myLibrary.push(newBook);
+    }
+}
+
+function checkBookExists(title) {
+    // If array length is 0, then book isn't in library yet
+    return myLibrary.filter(book => (book.title == title)).length
+}
+
+function updateBookInformation(newBook) {
+    const updateBook = prompt("This book is already in the catalogues. Would you like to update the information?");
+
+    if (updateBook == "yes") {
+        const result = myLibrary.map(book => book.title == newBook.title ? newBook : book);
+        myLibrary = result;
+    }
 }
 
 function displayBooks() {
