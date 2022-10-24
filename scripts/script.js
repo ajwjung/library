@@ -1,6 +1,11 @@
 const container = document.querySelector(".container");
 const newBookBtn = container.querySelector("#new-book");
 const bookForm = container.querySelector("form");
+const bookTitle = bookForm.querySelector("input[name='title']");
+const bookAuthor = bookForm.querySelector("input[name='author']");
+const numberOfPages = bookForm.querySelector("input[name='book-pages']");
+const readStatus = bookForm.querySelector("select[name='read']");
+const submitBook = bookForm.querySelector("#submit-entry");
 const bookContainer = container.querySelector(".book-cards");
 
 let myLibrary = [];
@@ -10,17 +15,22 @@ function Book(title, author, pages, read) {
     this.author = author
     this.pages = pages
     this.read = read
-    this.info = function() {
-        return `${this.title} by ${this.author}, ${this.pages}, ${this.read}`
-    }
+    // this.info = function() {
+    //     return `${this.title} by ${this.author}, ${this.pages}, ${this.read}`
+    // }
 }
 
-function addBookToLibrary() {
-    const title = prompt("Enter a book title:");
-    const author = prompt("Who wrote the book?");
-    const pages = prompt("How many pages does the book have?");
-    const read = prompt("Did you finish reading the book?");
+// function addBookToLibrary() {
+//     const title = prompt("Enter a book title:");
+//     const author = prompt("Who wrote the book?");
+//     const pages = prompt("How many pages does the book have?");
+//     const read = prompt("Did you finish reading the book?");
 
+//     let newBook = new Book(title, author, pages, read);
+//     myLibrary.push(newBook);
+// }
+
+function addBookToLibrary(title, author, pages, read) {
     let newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
 }
@@ -51,6 +61,17 @@ function addCard(item) {
 // Toggle form visibility
 newBookBtn.addEventListener("click", function (e) {
     bookForm.classList.toggle("hidden");
+})
+
+// Submit book to library
+submitBook.addEventListener("click", function (e) {
+    addBookToLibrary(bookTitle.value, bookAuthor.value, numberOfPages.value + " pages", readStatus.value);
+
+    // Clear input fields after submitting
+    bookTitle.value = "";
+    bookAuthor.value = "";
+    numberOfPages.value = "";
+    readStatus.value = "";
 })
 
 // Temporary content for testing
