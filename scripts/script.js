@@ -45,7 +45,7 @@ function addCard(item) {
 
     // Create new paragraph for each property
     for (property in item) {
-        if (property == "info") continue;
+        // if (property == "info") continue;
 
         const newPara = document.createElement("p");
         const newContent = document.createTextNode(item[property]);
@@ -58,6 +58,12 @@ function addCard(item) {
     bookContainer.appendChild(newCard);
 }
 
+function clearInputFields() {
+    bookTitle.value = "";
+    bookAuthor.value = "";
+    numberOfPages.value = "";
+}
+
 // Toggle form visibility
 newBookBtn.addEventListener("click", function (e) {
     bookForm.classList.toggle("hidden");
@@ -67,11 +73,7 @@ newBookBtn.addEventListener("click", function (e) {
 submitBook.addEventListener("click", function (e) {
     addBookToLibrary(bookTitle.value, bookAuthor.value, numberOfPages.value + " pages", readStatus.value);
 
-    // Clear input fields after submitting
-    bookTitle.value = "";
-    bookAuthor.value = "";
-    numberOfPages.value = "";
-    readStatus.value = "";
+    clearInputFields();
 })
 
 // Temporary content for testing
