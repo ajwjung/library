@@ -10,7 +10,41 @@
 </head>
 <body>
     <div class="container">
+        <h1>Book Collection</h1>
+
+        <button type="button" id="new-book">
+            <img src="#" alt="add icon">
+            <span>NEW BOOK</span>
+        </button>
         
+        <form action="#" method="get">
+            <div class="form-input">
+                <label for="book-title">Title: </label>
+                <input type="text" name="title" id="book-title" placeholder="The Hobbit" minlength="2">
+            </div>
+
+            <div class="form-input">
+                <label for="book-author">Author: </label>
+                <input type="text" name="author" id="book-author" placeholder="J.R.R. Tolkien" minlength="2">
+            </div>
+
+            <div class="form-input">
+                <label for="page-number">Number of Pages: </label>
+                <input type="number" name="book-pages" id="page-number" placeholder="295" min="1">
+            </div>
+
+            <div class="form-input">
+                <label for="read-status">Read Status: </label>
+                <select name="read" id="read-status">
+                    <option value="yes" selected>Read</option>
+                    <option value="no">Not read yet</option>
+                </select>
+            </div>
+
+            <button type="submit" id="submit-entry">Add book</button>
+        </form>
+
+        <div class="book-cards"></div>
     </div>
 </body>
 </html>
