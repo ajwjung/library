@@ -1,6 +1,8 @@
 body {
     margin: 0;
     padding: 0;
+    background-image: url("../images/yj-lee-xFcoLGuhdGs-unsplash.jpg");
+    background-size: cover;
 }
 
 .hidden {
