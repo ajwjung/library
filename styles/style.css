@@ -5,6 +5,24 @@ body {
     background-size: cover;
 }
 
+#new-book {
+    height: 60px;
+    width: 150px;
+    background: none;
+    border: none;
+    border-radius: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#new-book img {
+    height: 50%;
+    width: auto;
+}
+
 .hidden {
     visibility: hidden;
 }
