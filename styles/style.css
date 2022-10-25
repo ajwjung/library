@@ -97,7 +97,7 @@ select,
     border-radius: 20px;
 }
 
-.delete-book {
+.delete-btn {
     height: 30px;
     width: 30px;
 }
