@@ -20,24 +20,23 @@ function Book(title, author, pages, read) {
 function addBookToLibrary(title, author, pages, read) {
     let newBook = new Book(title, author, pages, read);
 
-    if (checkBookExists(title.toLowerCase()) > 0) {
+    if (checkBookExists(title) > 0) {
         return updateBookInformation(newBook);
     } else {
-        myLibrary.push(newBook);
-        return newBook;
+        return myLibrary.push(newBook);
     }
 }
 
 function checkBookExists(title) {
     // If array length is 0, then book isn't in library yet
-    return myLibrary.filter(book => (book.title == title)).length
+    return myLibrary.filter(book => (book.title.toLowerCase() === title.toLowerCase())).length
 }
 
 function updateBookInformation(newBook) {
     const updateBook = prompt("This book is already in the catalogues. Would you like to update the information?");
 
     if (updateBook == "yes") {
-        const result = myLibrary.map(book => book.title == newBook.title ? newBook : book);
+        const result = myLibrary.map(book => book.title.toLowerCase() == newBook.title.toLowerCase() ? newBook : book);
         myLibrary = result;
     }
 
@@ -79,9 +78,7 @@ newBookBtn.addEventListener("click", function (e) {
 
 // Submit book to library and display card
 submitBook.addEventListener("click", function (e) {
-    const book = addBookToLibrary(
-        bookTitle.value, bookAuthor.value,
-        numberOfPages.value + " pages", readStatus.value);
+    const book = addBookToLibrary(bookTitle.value, bookAuthor.value, numberOfPages.value + " pages", readStatus.value);
 
     clearInputFields();
     addCard(book);
