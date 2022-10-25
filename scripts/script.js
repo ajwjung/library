@@ -51,7 +51,17 @@ function updateBookInformation(newBook) {
 function addCard(item) {
     const newCard = document.createElement("div");
     newCard.classList.add("card");
+    newCard.setAttribute("id", item.title);
 
+    // Check if card for book already exists
+    const cards = bookContainer.querySelectorAll("#" + item.title); 
+
+    // If card already exists, remove it
+    if (cards.length > 0) {
+        const bookCard = bookContainer.querySelector("#" + item.title);
+        bookCard.remove()
+    }
+    
     // Create new paragraph for each property
     for (property in item) {
 
