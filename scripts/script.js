@@ -54,6 +54,9 @@ function addCard(item) {
     newCard.classList.add("card");
     newCard.setAttribute("id", item.title);
 
+    const contentContainer = document.createElement("div");
+    contentContainer.classList.add("info-container");
+
     // Check if card for book already exists
     const cards = bookContainer.querySelectorAll("#" + item.title); 
 
@@ -71,7 +74,7 @@ function addCard(item) {
         const newPara = document.createElement("p");
         const newContent = document.createTextNode(item[property]);
         newPara.appendChild(newContent);     
-        newCard.appendChild(newPara);
+        contentContainer.appendChild(newPara);
     }
 
     // Add X button to remove book (and card)
@@ -80,6 +83,7 @@ function addCard(item) {
     removeBookBtn.textContent = "X";
     newCard.appendChild(removeBookBtn);
 
+    newCard.appendChild(contentContainer)
     bookContainer.appendChild(newCard);
 }
 
