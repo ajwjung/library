@@ -97,6 +97,11 @@ select,
     border-radius: 20px;
 }
 
+.delete-book {
+    height: 30px;
+    width: 30px;
+}
+
 .hidden {
     visibility: hidden;
 }
