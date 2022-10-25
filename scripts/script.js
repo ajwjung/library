@@ -66,6 +66,7 @@ function clearInputFields() {
     bookTitle.value = "";
     bookAuthor.value = "";
     numberOfPages.value = "";
+    readStatus.value = "Read";
 }
 
 // Toggle form visibility
