@@ -43,10 +43,6 @@ function updateBookInformation(newBook) {
     }
 }
 
-// function displayBooks() {
-//     myLibrary.forEach((book) => addCard(book))
-// }
-
 // Creates a single book card
 function addCard(item) {
     const newCard = document.createElement("div");
@@ -61,7 +57,7 @@ function addCard(item) {
         const bookCard = bookContainer.querySelector("#" + item.title);
         bookCard.remove()
     }
-    
+
     // Create new paragraph for each property
     for (property in item) {
 
@@ -93,18 +89,3 @@ submitBook.addEventListener("click", function (e) {
     clearInputFields();
     addCard(book);
 })
-
-// Temporary content for testing
-// const theHobbit = new Book(
-//     "The Hobbit", "J.R.R. Tolkien", "295 pages", "not read yet"
-//     );
-// const harryPotter = new Book(
-//     "Harry Potter and the Sorcerer's Stone", "J. K. Rowling", "223 pages", "read"
-//     );
-// const percyJackson = new Book(
-//     "The Lightning Thief", "J.R.R. Tolkien", "377 pages", "not read yet"
-//     );
-
-// myLibrary.push(theHobbit, harryPotter, percyJackson);
-
-// displayBooks();
