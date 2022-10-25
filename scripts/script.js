@@ -21,10 +21,12 @@ function addBookToLibrary(title, author, pages, read) {
     let newBook = new Book(title, author, pages, read);
 
     if (checkBookExists(title) > 0) {
-        return updateBookInformation(newBook);
+        updateBookInformation(newBook);
     } else {
-        return myLibrary.push(newBook);
+        myLibrary.push(newBook);
     }
+
+    return newBook;
 }
 
 function checkBookExists(title) {
@@ -39,8 +41,6 @@ function updateBookInformation(newBook) {
         const result = myLibrary.map(book => book.title.toLowerCase() == newBook.title.toLowerCase() ? newBook : book);
         myLibrary = result;
     }
-
-    return updateBook;
 }
 
 // function displayBooks() {
