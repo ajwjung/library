@@ -9,6 +9,8 @@ const submitBook = bookForm.querySelector("#submit-entry");
 const bookContainer = container.querySelector(".book-cards");
 
 let myLibrary = [];
+// Default: do not update book's card (even if duplicate entry)
+let updateCard = false; 
 
 function Book(title, author, pages, read) {
     this.title = title
@@ -38,8 +40,11 @@ function updateBookInformation(newBook) {
     const updateBook = prompt("This book is already in the catalogues. Would you like to update the information?");
 
     if (updateBook == "yes") {
+        updateCard = true;
         const result = myLibrary.map(book => book.title.toLowerCase() == newBook.title.toLowerCase() ? newBook : book);
         myLibrary = result;
+    } else if (updateBook === null) {
+        updateCard = false;
     }
 }
 
@@ -52,10 +57,12 @@ function addCard(item) {
     // Check if card for book already exists
     const cards = bookContainer.querySelectorAll("#" + item.title); 
 
-    // If card already exists, remove it
-    if (cards.length > 0) {
+    // If card already exists and user wants to update, remove it
+    if (cards.length > 0 && updateCard) {
         const bookCard = bookContainer.querySelector("#" + item.title);
         bookCard.remove()
+    } else if (cards.length > 0 && !updateCard) {
+        return;
     }
 
     // Create new paragraph for each property
