@@ -74,6 +74,11 @@ function addCard(item) {
         newCard.appendChild(newPara);
     }
 
+    // Add X button to remove book (and card)
+    const removeBookBtn = document.createElement("button");
+    removeBookBtn.classList.add("delete-book");
+    newCard.appendChild(removeBookBtn);
+
     bookContainer.appendChild(newCard);
 }
 
