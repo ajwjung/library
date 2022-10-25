@@ -21,7 +21,7 @@ h1 {
     text-align: center;
 }
 
-.input-form {
+.input-container {
     grid-area: 2 / 1;
 }
 
