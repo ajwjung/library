@@ -21,12 +21,20 @@ h1 {
     text-align: center;
 }
 
-.input-container {
-    grid-area: 2 / 1;
-
+.input-container,
+.form-input,
+#new-book {
     display: flex;
     flex-direction: column;
+}
+
+.input-container,
+#new-book {
     align-items: center;
+}
+
+.input-container {
+    grid-area: 2 / 1;
 }
 
 form {
@@ -41,8 +49,6 @@ form > ul {
 }
 
 .form-input {
-    display: flex;
-    flex-direction: column;
     margin: 5px;
 }
 
@@ -63,10 +69,6 @@ select,
     background: none;
     border: none;
     border-radius: 20px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 10px;
 }
 
