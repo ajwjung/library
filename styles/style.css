@@ -25,6 +25,10 @@ h1 {
 .form-input,
 #new-book {
     display: flex;
+}
+
+.input-container,
+.form-input {
     flex-direction: column;
 }
 
