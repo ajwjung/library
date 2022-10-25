@@ -21,9 +21,10 @@ function addBookToLibrary(title, author, pages, read) {
     let newBook = new Book(title, author, pages, read);
 
     if (checkBookExists(title.toLowerCase()) > 0) {
-        updateBookInformation(newBook);
+        return updateBookInformation(newBook);
     } else {
         myLibrary.push(newBook);
+        return newBook;
     }
 }
 
@@ -39,11 +40,13 @@ function updateBookInformation(newBook) {
         const result = myLibrary.map(book => book.title == newBook.title ? newBook : book);
         myLibrary = result;
     }
+
+    return updateBook;
 }
 
-function displayBooks() {
-    myLibrary.forEach((book) => addCard(book))
-}
+// function displayBooks() {
+//     myLibrary.forEach((book) => addCard(book))
+// }
 
 // Creates a single book card
 function addCard(item) {
@@ -74,24 +77,27 @@ newBookBtn.addEventListener("click", function (e) {
     bookForm.classList.toggle("hidden");
 })
 
-// Submit book to library
+// Submit book to library and display card
 submitBook.addEventListener("click", function (e) {
-    addBookToLibrary(bookTitle.value, bookAuthor.value, numberOfPages.value + " pages", readStatus.value);
+    const book = addBookToLibrary(
+        bookTitle.value, bookAuthor.value,
+        numberOfPages.value + " pages", readStatus.value);
 
     clearInputFields();
+    addCard(book);
 })
 
 // Temporary content for testing
-const theHobbit = new Book(
-    "The Hobbit", "J.R.R. Tolkien", "295 pages", "not read yet"
-    );
-const harryPotter = new Book(
-    "Harry Potter and the Sorcerer's Stone", "J. K. Rowling", "223 pages", "read"
-    );
-const percyJackson = new Book(
-    "The Lightning Thief", "J.R.R. Tolkien", "377 pages", "not read yet"
-    );
+// const theHobbit = new Book(
+//     "The Hobbit", "J.R.R. Tolkien", "295 pages", "not read yet"
+//     );
+// const harryPotter = new Book(
+//     "Harry Potter and the Sorcerer's Stone", "J. K. Rowling", "223 pages", "read"
+//     );
+// const percyJackson = new Book(
+//     "The Lightning Thief", "J.R.R. Tolkien", "377 pages", "not read yet"
+//     );
 
-myLibrary.push(theHobbit, harryPotter, percyJackson);
+// myLibrary.push(theHobbit, harryPotter, percyJackson);
 
-displayBooks();
+// displayBooks();
