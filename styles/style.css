@@ -23,7 +23,8 @@ h1 {
 
 .input-container,
 .form-input,
-#new-book {
+#new-book,
+.card {
     display: flex;
 }
 
@@ -95,11 +96,15 @@ select,
     min-width: min-content;
     background: rgba(159, 182, 205, 0.9);
     border-radius: 20px;
+
+    justify-content: space-between;
+    align-items: baseline;
 }
 
 .delete-btn {
     height: 30px;
     width: 30px;
+    order: 2;
 }
 
 .hidden {
