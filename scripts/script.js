@@ -59,8 +59,6 @@ function addCard(item) {
         newCard.appendChild(newPara);
     }
 
-    newCard.style.border = "2px solid black";
-
     bookContainer.appendChild(newCard);
 }
 
