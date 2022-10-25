@@ -102,6 +102,8 @@ select,
 }
 
 .delete-btn {
+    background: none;
+    border: none;
     height: 30px;
     width: 30px;
     order: 2;
