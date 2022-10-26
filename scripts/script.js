@@ -10,7 +10,8 @@ const bookContainer = container.querySelector(".book-cards");
 
 let myLibrary = [];
 // Default: do not update book's card (even if duplicate entry)
-let updateCard = false; 
+let updateCard = false;
+let bookIndex = -1; 
 
 function Book(title, author, pages, read) {
     this.title = title
@@ -26,6 +27,7 @@ function addBookToLibrary(title, author, pages, read) {
         updateBookInformation(newBook);
     } else {
         myLibrary.push(newBook);
+        bookIndex++;
     }
 
     return newBook;
@@ -52,21 +54,21 @@ function updateBookInformation(newBook) {
 function addCard(item) {
     const newCard = document.createElement("div");
     newCard.classList.add("card");
-    newCard.setAttribute("id", item.title);
+    newCard.setAttribute("id", "book" + bookIndex);
 
     const contentContainer = document.createElement("div");
     contentContainer.classList.add("info-container");
 
-    // Check if card for book already exists
-    const cards = bookContainer.querySelectorAll("#" + item.title); 
+    // // Check if card for book already exists
+    // const cards = bookContainer.querySelectorAll("." + item.title); 
 
-    // If card already exists and user wants to update, remove it
-    if (cards.length > 0 && updateCard) {
-        const bookCard = bookContainer.querySelector("#" + item.title);
-        bookCard.remove()
-    } else if (cards.length > 0 && !updateCard) {
-        return;
-    }
+    // // If card already exists and user wants to update, remove it
+    // if (cards.length > 0 && updateCard) {
+    //     const bookCard = bookContainer.querySelector("." + item.title);
+    //     bookCard.remove()
+    // } else if (cards.length > 0 && !updateCard) {
+    //     return;
+    // }
 
     // Create new paragraph for each property
     for (property in item) {
@@ -80,6 +82,7 @@ function addCard(item) {
     // Add X button to remove book (and card)
     const removeBookBtn = document.createElement("button");
     removeBookBtn.classList.add("delete-btn");
+    removeBookBtn.setAttribute("id", "book" + bookIndex);
     removeBookBtn.textContent = "X";
     newCard.appendChild(removeBookBtn);
 
