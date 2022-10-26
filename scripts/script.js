@@ -72,10 +72,9 @@ function addCard(item) {
 
     // Create new paragraph for each property
     for (property in item) {
-
         const newPara = document.createElement("p");
         const newContent = document.createTextNode(item[property]);
-        newPara.appendChild(newContent);     
+        newPara.appendChild(newContent);
         contentContainer.appendChild(newPara);
     }
 
@@ -85,6 +84,11 @@ function addCard(item) {
     removeBookBtn.setAttribute("id", "book" + bookIndex);
     removeBookBtn.textContent = "X";
     newCard.appendChild(removeBookBtn);
+
+    // Add button to toggle read status
+    const toggleReadStatus = document.createElement("button");
+    toggleReadStatus.classList.add("toggle-read");
+    newCard.appendChild(toggleReadStatus);
 
     newCard.appendChild(contentContainer)
     bookContainer.appendChild(newCard);
