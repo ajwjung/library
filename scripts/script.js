@@ -109,3 +109,19 @@ submitBook.addEventListener("click", function (e) {
     clearInputFields();
     addCard(book);
 })
+
+// Remove book from library
+document.body.addEventListener("click", function (e) {
+    if (e.target.className == "delete-btn") {
+        const bookId = e.target.id;
+        myLibrary.splice(parseInt(bookId), 1)
+        
+        // Delete card(s) simultaneously
+        const cardToDelete = bookContainer.querySelectorAll("#" + bookId);
+        if (cardToDelete.length > 1) {
+            cardToDelete.forEach(card => card.remove());
+        } else {
+            cardToDelete.remove();
+        }
+    }
+});
