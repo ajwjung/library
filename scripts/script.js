@@ -132,4 +132,20 @@ document.body.addEventListener("click", function (e) {
             cardToDelete.remove();
         }
     }
+
+    // When toggle button is clicked, update read status in myLibrary
+    if (btnClass == "toggle-read") {
+        const infoContainer = document.getElementsByClassName("card " + bookId)[0].lastElementChild;
+
+        const titlePara = infoContainer.firstChild.innerHTML;
+        console.log(titlePara);
+
+        myLibrary.map(book => {
+            if (book.title == titlePara && book.read == "Read") {
+                book.read = "Not read yet";
+            } else if (book.title == titlePara && book.read == "Not read yet") {
+                book.read = "Read";
+            }
+        })
+    }
 });
