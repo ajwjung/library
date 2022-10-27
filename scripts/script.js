@@ -53,8 +53,7 @@ function updateBookInformation(newBook) {
 // Creates a single book card
 function addCard(item) {
     const newCard = document.createElement("div");
-    newCard.classList.add("card");
-    newCard.setAttribute("id", "book" + bookIndex);
+    newCard.classList.add("card", "book" + bookIndex);
 
     const contentContainer = document.createElement("div");
     contentContainer.classList.add("info-container");
@@ -74,20 +73,23 @@ function addCard(item) {
     for (property in item) {
         const newPara = document.createElement("p");
         const newContent = document.createTextNode(item[property]);
+        if (property == "read") {
+            newPara.classList.add("read")
+        }
+
         newPara.appendChild(newContent);
         contentContainer.appendChild(newPara);
     }
 
     // Add X button to remove book (and card)
     const removeBookBtn = document.createElement("button");
-    removeBookBtn.classList.add("delete-btn");
-    removeBookBtn.setAttribute("id", "book" + bookIndex);
+    removeBookBtn.classList.add("delete-btn", "book" + bookIndex);
     removeBookBtn.textContent = "X";
     newCard.appendChild(removeBookBtn);
 
     // Add button to toggle read status
     const toggleReadStatus = document.createElement("button");
-    toggleReadStatus.classList.add("toggle-read");
+    toggleReadStatus.classList.add("toggle-read", "book" + bookIndex);
     newCard.appendChild(toggleReadStatus);
 
     newCard.appendChild(contentContainer)
@@ -114,14 +116,16 @@ submitBook.addEventListener("click", function (e) {
     addCard(book);
 })
 
-// Remove book from library
 document.body.addEventListener("click", function (e) {
-    if (e.target.className == "delete-btn") {
-        const bookId = e.target.id;
+    const btnClass = e.target.classList[0];
+    const bookId = e.target.classList[1];
+
+    // Remove book from library
+    if (btnClass == "delete-btn") {
         myLibrary.splice(parseInt(bookId), 1)
         
         // Delete card(s) simultaneously
-        const cardToDelete = bookContainer.querySelectorAll("#" + bookId);
+        const cardToDelete = bookContainer.querySelectorAll("." + bookId);
         if (cardToDelete.length > 1) {
             cardToDelete.forEach(card => card.remove());
         } else {
