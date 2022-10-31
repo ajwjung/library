@@ -133,17 +133,20 @@ document.body.addEventListener("click", function (e) {
         }
     }
 
-    // When toggle button is clicked, update read status in myLibrary
+    // When toggle button is clicked, update read status in array and card
     if (btnClass == "toggle-read") {
         const infoContainer = document.getElementsByClassName("card " + bookId)[0].lastElementChild;
 
         const titlePara = infoContainer.firstChild.innerHTML;
+        let cardReadStatus = infoContainer.lastChild;
 
         myLibrary.map(book => {
             if (book.title == titlePara && book.read == "Read") {
                 book.read = "Not read yet";
+                cardReadStatus.innerHTML = "Not read yet";
             } else if (book.title == titlePara && book.read == "Not read yet") {
                 book.read = "Read";
+                cardReadStatus.innerHTML = "Read";
             }
         })
     }
