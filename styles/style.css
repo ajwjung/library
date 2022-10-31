@@ -1,3 +1,17 @@
+:root {
+    --primary-font: 'Jura', sans-serif;
+    --secondary-font: 'Bungee Hairline', cursive;
+    --std-font-weight: 600;
+    --std-font-size: 1rem;
+    --lrg-font-size: 3rem;
+}
+
+* {
+    font-family: var(--primary-font);
+    font-weight: var(--std-font-weight);
+    font-size: var(--std-font-size);
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -19,6 +33,8 @@ h1 {
     grid-column: 1 / span 2;
     grid-row: 1;
     text-align: center;
+    font-family: var(--secondary-font);
+    font-size: var(--lrg-font-size);
 }
 
 .input-container,
