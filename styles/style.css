@@ -6,6 +6,7 @@
     --lrg-font-size: 3rem;
     --light-color: rgb(218, 215, 203);
     --dark-color: rgb(131, 129, 123);
+    --transparent--color: rgba(218, 215, 203, 0.3);
 }
 
 * {
@@ -83,6 +84,10 @@ select,
 
 #submit-entry {
     margin-top: 5px;
+    padding: 5px;
+    background: rgba(241, 240, 236, 0.5);
+    border: 2px solid var(--dark-color);
+    border-radius: 20px;
 }
 
 #new-book {
@@ -111,7 +116,7 @@ select,
 .card {
     padding: 20px;
     min-width: min-content;
-    background: rgba(218, 215, 203, 0.3);
+    background: var(--transparent--color);
     border: 5px double var(--light-color);
     border-radius: 20px;
     
