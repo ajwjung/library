@@ -111,6 +111,7 @@ select,
 .card {
     padding: 20px;
     min-width: min-content;
+    background: rgba(218, 215, 203, 0.3);
     border: 5px double var(--light-color);
     border-radius: 20px;
     
