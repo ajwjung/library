@@ -73,10 +73,7 @@ function addCard(item) {
     for (property in item) {
         const newPara = document.createElement("p");
         const newContent = document.createTextNode(item[property]);
-        if (property == "read") {
-            newPara.classList.add("read")
-        }
-
+        
         newPara.appendChild(newContent);
         contentContainer.appendChild(newPara);
     }
