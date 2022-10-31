@@ -4,6 +4,8 @@
     --std-font-weight: 600;
     --std-font-size: 1rem;
     --lrg-font-size: 3rem;
+    --light-color: rgb(218, 215, 203);
+    --dark-color: rgb(131, 129, 123);
 }
 
 * {
@@ -15,7 +17,7 @@
 body {
     margin: 0;
     padding: 0;
-    background: url("../images/resul-mentes-DbwYNr8RPbg-unsplash.jpg");
+    background: url("../images/david-van-dijk-3LTht2nxd34-unsplash.jpg");
     background-size: cover;
 }
 
@@ -102,7 +104,7 @@ select,
     grid-area: 2 / 2;
 
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-template-rows: repeat(2, 1fr);
     gap: 15px;
 }
@@ -110,9 +112,9 @@ select,
 .card {
     padding: 20px;
     min-width: min-content;
-    background: rgba(159, 182, 205, 0.9);
+    max-width: 30%;
+    border: 5px double var(--light-color);
     border-radius: 20px;
-
     justify-content: space-between;
     align-items: baseline;
 }
