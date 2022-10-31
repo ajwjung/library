@@ -81,7 +81,6 @@ function addCard(item) {
     // Add X button to remove book (and card)
     const removeBookBtn = document.createElement("button");
     removeBookBtn.classList.add("delete-btn", "book" + bookIndex);
-    removeBookBtn.textContent = "X";
     newCard.appendChild(removeBookBtn);
 
     // Add button to toggle read status
