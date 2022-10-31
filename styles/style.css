@@ -109,6 +109,18 @@ select,
     order: 2;
 }
 
+.toggle-read {
+    background: url("../images/checkbox-marked.svg");
+    background-size: cover;
+    border: none;
+    height: 40px;
+    width: 40px;
+}
+
+.not-read {
+    background: url("../images/checkbox-marked-outline.svg");
+}
+
 .hidden {
     visibility: hidden;
 }

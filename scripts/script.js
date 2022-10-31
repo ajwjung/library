@@ -87,6 +87,10 @@ function addCard(item) {
     // Add button to toggle read status
     const toggleReadStatus = document.createElement("button");
     toggleReadStatus.classList.add("toggle-read", "book" + bookIndex);
+    if (item.read == "Not read yet") {
+        toggleReadStatus.classList.add("not-read");
+    }
+
     newCard.appendChild(toggleReadStatus);
 
     newCard.appendChild(contentContainer)
@@ -141,9 +145,11 @@ document.body.addEventListener("click", function (e) {
             if (book.title == titlePara && book.read == "Read") {
                 book.read = "Not read yet";
                 cardReadStatus.innerHTML = "Not read yet";
+                e.target.classList.add("not-read");
             } else if (book.title == titlePara && book.read == "Not read yet") {
                 book.read = "Read";
                 cardReadStatus.innerHTML = "Read";
+                e.target.classList.remove("not-read");
             }
         })
     }
