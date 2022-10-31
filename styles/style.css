@@ -112,7 +112,6 @@ select,
 .card {
     padding: 20px;
     min-width: min-content;
-    max-width: 30%;
     border: 5px double var(--light-color);
     border-radius: 20px;
     justify-content: space-between;
