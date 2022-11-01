@@ -7,6 +7,7 @@
     --light-color: rgb(218, 215, 203);
     --dark-color: rgb(131, 129, 123);
     --transparent--color: rgba(218, 215, 203, 0.3);
+    --round-corners: 20px;
 }
 
 * {
@@ -87,7 +88,7 @@ select,
     padding: 5px;
     background: rgba(241, 240, 236, 0.5);
     border: 2px solid var(--dark-color);
-    border-radius: 20px;
+    border-radius: var(--round-corners);
 }
 
 #new-book {
@@ -95,7 +96,7 @@ select,
     width: 150px;
     background: none;
     border: none;
-    border-radius: 20px;
+    border-radius: var(--round-corners);
     gap: 10px;
 }
 
@@ -132,22 +133,21 @@ select,
     grid-area: text;
 }
 
-.delete-btn {
-    background: url("../images/close.svg");
-    border: none;
+.delete-btn,
+.toggle-read {
     height: 30px;
     width: 30px;
+    background-size: cover;
+    border: none;
+}
 
+.delete-btn {
+    background: url("../images/close.svg");
     grid-area: close;
 }
 
 .toggle-read {
     background: url("../images/checkbox-marked.svg");
-    background-size: cover;
-    border: none;
-    height: 30px;
-    width: 30px;
-
     grid-area: toggle;
     align-self: flex-end;
 }
