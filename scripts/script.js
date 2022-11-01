@@ -117,17 +117,17 @@ function clearInputFields() {
 // Disable submit button until form fields validated
 function checkForm() {
     let formElements = document.forms["book-form"].elements;
-    let cansubmit = true;
+    let canSubmit = true;
 
     for (let i = 0; i < formElements.length - 1; i++) {
         if (formElements[i].value.length == 0) {
-            cansubmit = false;
+            canSubmit = false;
         }
     }
 
-    document.getElementById('submit-entry').disabled = !cansubmit;
+    document.getElementById('submit-entry').disabled = !canSubmit;
 
-    return cansubmit;
+    return canSubmit;
 }
 
 // Toggle form visibility
