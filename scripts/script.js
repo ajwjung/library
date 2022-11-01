@@ -39,9 +39,9 @@ function checkBookExists(title) {
 }
 
 function updateBookInformation(newBook) {
-    const updateBook = prompt("This book is already in the catalogues. Would you like to update the information?");
+    const updateBook = prompt("This book is already in the catalogues. Would you like to update the information?").toLowerCase();
 
-    if (updateBook == "yes") {
+    if (updateBook == "yes" || updateBook == "y" || updateBook == "") {
         updateCard = true;
         const result = myLibrary.map(book => book.title.toLowerCase() == newBook.title.toLowerCase() ? newBook : book);
         myLibrary = result;
