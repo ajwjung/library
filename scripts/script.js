@@ -45,11 +45,10 @@ function updateBookInformation(newBook) {
         updateCard = true;
         const result = myLibrary.map(book => book.title.toLowerCase() == newBook.title.toLowerCase() ? newBook : book);
         myLibrary = result;
+        updateBookCard();
     } else if (updateBook === null) {
         updateCard = false;
     }
-
-    updateBookCard();
 }
 
 // Check if card for book already exists
@@ -61,7 +60,7 @@ function updateBookCard() {
             if (card.children[0].innerHTML == bookTitle.value) {
                 card.children[0].innerHTML = bookTitle.value;
                 card.children[1].innerHTML = bookAuthor.value;
-                card.children[2].innerHTML = numberOfPages.value;
+                card.children[2].innerHTML = numberOfPages.value + " pages";
                 card.children[3].innerHTML = readStatus.value;
             }
         })        
