@@ -4,9 +4,10 @@
     --std-font-weight: 600;
     --std-font-size: 1rem;
     --lrg-font-size: 3rem;
-    --light-color: rgb(218, 215, 203);
-    --dark-color: rgb(131, 129, 123);
-    --transparent--color: rgba(218, 215, 203, 0.3);
+    --light-color: rgba(240, 229, 196, 0.5);
+    --dark-color: rgba(210, 178, 91, 0.7);
+    --bg-color: rgb(238, 238, 238);
+    --btn--color: rgba(238, 226, 172, 0.5);
     --round-corners: 20px;
 }
 
@@ -19,8 +20,7 @@
 body {
     margin: 0;
     padding: 0;
-    background: url("../images/david-van-dijk-3LTht2nxd34-unsplash.jpg");
-    background-size: cover;
+    background: var(--bg-color);
 }
 
 .container {
@@ -86,7 +86,7 @@ select,
 #submit-entry {
     margin-top: 5px;
     padding: 5px;
-    background: rgba(241, 240, 236, 0.5);
+    background: var(--btn--color);
     border: 2px solid var(--dark-color);
     border-radius: var(--round-corners);
 }
@@ -117,9 +117,9 @@ select,
 .card {
     padding: 20px;
     min-width: min-content;
-    background: var(--transparent--color);
-    border: 5px double var(--light-color);
-    border-radius: 20px;
+    background: var(--light-color);
+    border: 5px solid var(--dark-color);
+    border-radius: var(--round-corners);
     
     display: grid;
     grid-template-areas:
