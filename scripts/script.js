@@ -48,6 +48,24 @@ function updateBookInformation(newBook) {
     } else if (updateBook === null) {
         updateCard = false;
     }
+
+    updateBookCard();
+}
+
+// Check if card for book already exists
+function updateBookCard() {
+    if (updateCard) {
+        const allInfoContainers = bookContainer.querySelectorAll(".info-container");
+
+        allInfoContainers.forEach(card => {
+            if (card.children[0].innerHTML == bookTitle.value) {
+                card.children[0].innerHTML = bookTitle.value;
+                card.children[1].innerHTML = bookAuthor.value;
+                card.children[2].innerHTML = numberOfPages.value;
+                card.children[3].innerHTML = readStatus.value;
+            }
+        })        
+    }
 }
 
 // Creates a single book card
