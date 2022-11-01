@@ -116,7 +116,7 @@ function checkForm() {
 
     document.getElementById('submit-entry').disabled = !cansubmit;
 
-    return cansubmit
+    return cansubmit;
 }
 
 // Toggle form visibility
@@ -132,6 +132,8 @@ submitBook.addEventListener("click", function (e) {
         clearInputFields();
         addCard(book);
     }
+
+    e.target.disabled = true;
 })
 
 document.body.addEventListener("click", function (e) {
