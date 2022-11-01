@@ -103,6 +103,22 @@ function clearInputFields() {
     readStatus.value = "Read";
 }
 
+// Disable submit button until form fields validated
+function checkForm() {
+    let formElements = document.forms["book-form"].elements;
+    let cansubmit = true;
+
+    for (let i = 0; i < formElements.length - 1; i++) {
+        if (formElements[i].value.length == 0) {
+            cansubmit = false;
+        }
+    }
+
+    document.getElementById('submit-entry').disabled = !cansubmit;
+
+    return cansubmit
+}
+
 // Toggle form visibility
 newBookBtn.addEventListener("click", function (e) {
     bookForm.classList.toggle("hidden");
@@ -110,10 +126,12 @@ newBookBtn.addEventListener("click", function (e) {
 
 // Submit book to library and display card
 submitBook.addEventListener("click", function (e) {
-    const book = addBookToLibrary(bookTitle.value, bookAuthor.value, numberOfPages.value + " pages", readStatus.value);
-
-    clearInputFields();
-    addCard(book);
+    if (checkForm() == true) {
+        const book = addBookToLibrary(bookTitle.value, bookAuthor.value, numberOfPages.value + " pages", readStatus.value);
+    
+        clearInputFields();
+        addCard(book);
+    }
 })
 
 document.body.addEventListener("click", function (e) {
