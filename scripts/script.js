@@ -45,29 +45,25 @@ function updateBookInformation(newBook) {
         updateCard = true;
         const result = myLibrary.map(book => book.title.toLowerCase() == newBook.title.toLowerCase() ? newBook : book);
         myLibrary = result;
-        updateBookCard();
+        // updateBookCard();
     } else if (updateBook === null) {
         updateCard = false;
     }
 }
 
 // Check if card for book already exists
-function updateBookCard() {
-    if (updateCard) {
-        const allInfoContainers = bookContainer.querySelectorAll(".info-container");
-
-        allInfoContainers.forEach(card => {
-            if (card.children[0].innerHTML == bookTitle.value) {
-                card.children[0].innerHTML = bookTitle.value;
-                card.children[1].innerHTML = bookAuthor.value;
-                card.children[2].innerHTML = numberOfPages.value + " pages";
-                card.children[3].innerHTML = readStatus.value;
-            }
-        })        
-    }
+function updateBookCard(allCards, book) {
+    allCards.forEach(card => {
+        if (card.children[0].innerHTML == book.title) {
+            card.children[0].innerHTML = book.title;
+            card.children[1].innerHTML = book.author;
+            card.children[2].innerHTML = book.pages;
+            card.children[3].innerHTML = book.read;
+        }
+    })
 }
 
-// Creates a single book card
+// Creates a book card (or updates contents if already created)
 function addCard(item) {
     const newCard = document.createElement("div");
     newCard.classList.add("card", "book" + bookIndex);
@@ -75,42 +71,40 @@ function addCard(item) {
     const contentContainer = document.createElement("div");
     contentContainer.classList.add("info-container");
 
-    // // Check if card for book already exists
-    // const cards = bookContainer.querySelectorAll("." + item.title); 
-
-    // // If card already exists and user wants to update, remove it
-    // if (cards.length > 0 && updateCard) {
-    //     const bookCard = bookContainer.querySelector("." + item.title);
-    //     bookCard.remove()
-    // } else if (cards.length > 0 && !updateCard) {
-    //     return;
-    // }
+    // Check if card for book already exists
+    const cards = bookContainer.querySelectorAll(".info-container");
+    const foundBooks = Array.from(cards).filter(card => card.children[0].innerHTML == item.title);
 
     // Create new paragraph for each property
-    for (property in item) {
-        const newPara = document.createElement("p");
-        const newContent = document.createTextNode(item[property]);
-        
-        newPara.appendChild(newContent);
-        contentContainer.appendChild(newPara);
+    if (foundBooks.length <= 0) {
+        for (property in item) {
+            const newPara = document.createElement("p");
+            const newContent = document.createTextNode(item[property]);
+            
+            newPara.appendChild(newContent);
+            contentContainer.appendChild(newPara);
+        }
+
+        // Add X button to remove book (and card)
+        const removeBookBtn = document.createElement("button");
+        removeBookBtn.classList.add("delete-btn", "book" + bookIndex);
+        newCard.appendChild(removeBookBtn);
+
+        // Add button to toggle read status
+        const toggleReadStatus = document.createElement("button");
+        toggleReadStatus.classList.add("toggle-read", "book" + bookIndex);
+        if (item.read == "Not read yet") {
+            toggleReadStatus.classList.add("not-read");
+        }
+
+        newCard.appendChild(toggleReadStatus);
+        newCard.appendChild(contentContainer)
+        bookContainer.appendChild(newCard);
+    } else if (foundBooks.length > 0 && updateCard) {
+        updateBookCard(cards, item);
+    } else if (foundBooks.length > 0 && !updateCard) {
+        return;
     }
-
-    // Add X button to remove book (and card)
-    const removeBookBtn = document.createElement("button");
-    removeBookBtn.classList.add("delete-btn", "book" + bookIndex);
-    newCard.appendChild(removeBookBtn);
-
-    // Add button to toggle read status
-    const toggleReadStatus = document.createElement("button");
-    toggleReadStatus.classList.add("toggle-read", "book" + bookIndex);
-    if (item.read == "Not read yet") {
-        toggleReadStatus.classList.add("not-read");
-    }
-
-    newCard.appendChild(toggleReadStatus);
-
-    newCard.appendChild(contentContainer)
-    bookContainer.appendChild(newCard);
 }
 
 function clearInputFields() {
