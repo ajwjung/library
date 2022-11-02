@@ -22,11 +22,16 @@ body {
     background: var(--bg-color);
 }
 
+.container,
+.book-cards,
+.card {
+    display: grid;
+}
+
 .container {
     height: 100vh;
     width: 100vw;
 
-    display: grid;
     grid-template-columns: 1fr 4fr;
     grid-template-rows: 10% 1fr 10%;
     row-gap: 10%;
@@ -97,11 +102,16 @@ select,
     border: 2px solid var(--dark-color);
 }
 
+#new-book,
+.delete-btn,
+.toggle-read {
+    border: none;
+}
+
 #new-book {
     height: 60px;
     width: 150px;
     background: none;
-    border: none;
     gap: 10px;
 }
 
@@ -113,7 +123,6 @@ select,
 .book-cards {
     grid-area: 2 / 2;
 
-    display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-template-rows: repeat(2, 1fr);
     gap: 15px;
@@ -125,7 +134,6 @@ select,
     background: var(--light-color);
     border: 5px solid var(--dark-color);
     
-    display: grid;
     grid-template-areas:
         "text close"
         "text toggle";
@@ -142,7 +150,6 @@ select,
     height: 30px;
     width: 30px;
     background-size: cover;
-    border: none;
 }
 
 .delete-btn {
