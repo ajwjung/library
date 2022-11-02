@@ -150,11 +150,18 @@ submitBook.addEventListener("click", function (e) {
 document.body.addEventListener("click", function (e) {
     const btnClass = e.target.classList[0];
     const bookId = e.target.classList[1];
-
+    
     // Remove book from library
     if (btnClass == "delete-btn") {
-        myLibrary.splice(parseInt(bookId), 1)
+        const cardInfo = document.getElementsByClassName("card " + bookId)[0].lastElementChild;
+        const bookName = cardInfo.firstChild.innerHTML;
+        const index = myLibrary.findIndex(book => book.title == bookName);
         
+        // Only splice array if book was found
+        if (index > -1) {
+            myLibrary.splice(index, 1)
+        }
+
         // Delete card(s) simultaneously
         const cardToDelete = bookContainer.querySelectorAll("." + bookId);
         if (cardToDelete.length > 1) {
@@ -167,7 +174,6 @@ document.body.addEventListener("click", function (e) {
     // When toggle button is clicked, update read status in array and card
     if (btnClass == "toggle-read") {
         const infoContainer = document.getElementsByClassName("card " + bookId)[0].lastElementChild;
-
         const titlePara = infoContainer.firstChild.innerHTML;
         let cardReadStatus = infoContainer.lastChild;
 
