@@ -8,7 +8,7 @@
     --dark-color: rgba(210, 178, 91, 0.7);
     --bg-color: rgb(238, 238, 238);
     --btn--color: rgba(238, 226, 172, 0.5);
-    --round-corners: 20px;
+    --round-corners: 10px;
 }
 
 * {
@@ -30,7 +30,8 @@ body {
     display: grid;
     grid-template-columns: 1fr 4fr;
     grid-template-rows: 10% 1fr 10%;
-    gap: 35px;
+    row-gap: 10%;
+    column-gap: 5%;
 }
 
 header,
@@ -103,7 +104,6 @@ select,
     width: 150px;
     background: none;
     border: none;
-    border-radius: var(--round-corners);
     gap: 10px;
 }
 
