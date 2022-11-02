@@ -17,6 +17,7 @@
 }
 
 body {
+    min-height: 100vh;
     margin: 0;
     padding: 0;
     background: var(--bg-color);
@@ -33,20 +34,27 @@ body {
     width: 100vw;
 
     grid-template-columns: 1fr 4fr;
-    grid-template-rows: 15% 1fr 10%;
+    grid-template-rows: 15% 1fr 7%;
 }
 
 header,
 .input-container,
 .form-input,
 #new-book,
-.cards-container {
+.cards-container,
+footer {
     display: flex;
 }
 
 header,
+footer {
+    justify-content: center;
+}
+
+header,
 .input-container,
-#new-book {
+#new-book,
+footer {
     align-items: center;
 }
 
@@ -54,7 +62,6 @@ header {
     grid-column: 1 / span 2;
     grid-row: 1;
     background: var(--dark-color);
-    justify-content: center;
 }
 
 h1 {
@@ -170,6 +177,15 @@ select,
 
 .not-read {
     background: url("../images/checkbox-marked-outline.svg");
+}
+
+footer {
+    grid-row: 3;
+    grid-column: 1 / span 2;
+}
+
+footer a {
+    padding: 0 5px;
 }
 
 .hidden {
