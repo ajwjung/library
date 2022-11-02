@@ -91,13 +91,12 @@ form > ul {
 }
 
 .form-input {
-    margin: 5px;
+    margin: 15px;
 }
 
 input,
 select,
 #submit-entry {
-    width: clamp(150px, 90%, 400px);
     box-sizing: border-box;
 }
 
@@ -119,6 +118,7 @@ select,
     width: 150px;
     background: none;
     gap: 10px;
+    margin-top: 1rem;
 }
 
 #new-book img {
