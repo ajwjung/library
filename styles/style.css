@@ -34,6 +34,7 @@ body {
 
     grid-template-columns: 1fr 4fr;
     grid-template-rows: 15% 1fr 10%;
+    column-gap: 5%;
 }
 
 header,
