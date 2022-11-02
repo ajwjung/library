@@ -34,13 +34,13 @@ body {
 
     grid-template-columns: 1fr 4fr;
     grid-template-rows: 15% 1fr 10%;
-    column-gap: 5%;
 }
 
 header,
 .input-container,
 .form-input,
-#new-book {
+#new-book,
+.cards-container {
     display: flex;
 }
 
@@ -119,13 +119,18 @@ select,
     width: auto;
 }
 
+.cards-container {
+    padding: clamp(50px, 5%, 70px);
+}
+
 .book-cards {
     width: 95%;
     grid-area: 2 / 2;
 
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-template-rows: repeat(2, 1fr);
-    gap: 15px;
+    column-gap: 3%;
+    row-gap: 5%;
 }
 
 .card {
