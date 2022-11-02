@@ -121,6 +121,7 @@ select,
 }
 
 .book-cards {
+    width: 95%;
     grid-area: 2 / 2;
 
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
