@@ -6,8 +6,8 @@
     --lrg-font-size: 3rem;
     --light-color: rgba(240, 229, 196, 0.5);
     --dark-color: rgba(210, 178, 91, 0.7);
+    --outline-color: rgb(196, 148, 28, 0.8);
     --bg-color: rgb(238, 238, 238);
-    --btn--color: rgba(238, 226, 172, 0.5);
 }
 
 * {
@@ -97,8 +97,8 @@ select,
 #submit-entry {
     margin-top: 10px;
     padding: 5px;
-    background: var(--btn--color);
-    border: 2px solid var(--dark-color);
+    background: var(--dark-color);
+    border: 2px solid var(--outline-color);
 }
 
 #new-book,
@@ -132,7 +132,7 @@ select,
     padding: 20px;
     min-width: min-content;
     background: var(--light-color);
-    border: 5px solid var(--dark-color);
+    border: 5px solid var(--outline-color);
     
     grid-template-areas:
         "text close"
