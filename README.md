@@ -1,5 +1,7 @@
 # Library App
 
+* [Live Demo](https://ajwjung.github.io/library/) :star2:
+
 ## Objective
 
 To test understanding of objects and object constructors by creating a small library app. Full project details can be found at [The Odin Project's page](https://www.theodinproject.com/lessons/node-path-javascript-library).
