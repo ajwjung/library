@@ -1,21 +1,26 @@
 :root {
     --primary-font: 'Jura', sans-serif;
     --secondary-font: 'Bungee Hairline', cursive;
-    --std-font-weight: 600;
-    --std-font-size: 1rem;
-    --lrg-font-size: 3rem;
-    --light-color: rgba(240, 229, 196, 0.5);
-    --dark-color: rgba(210, 178, 91, 0.7);
-    --outline-color: rgb(196, 148, 28, 0.8);
-    --bg-color: rgb(253, 253, 253);
+    --bold: 600;
+    --small: 1rem;
+    --gap: 5px;
+    --normal-font: 1rem;
+    --medium-font: 2rem;
+    --large-font: 3rem;
+    --light-color: rgb(155,119,93);
+    --dark-color: rgb(49,43,33);
+    --outline-color: rgb(137,78,29);
+    --bg-color: rgb(225,210,184);
+    --svg-filter: invert(12%) sepia(18%) saturate(797%) hue-rotate(359deg) brightness(102%) contrast(88%);
 }
 
 * {
     font-family: var(--primary-font);
-    font-weight: var(--std-font-weight);
-    font-size: var(--std-font-size);
+    font-weight: var(--bold);
+    font-size: var(--normal-font);
 }
 
+/* Styles for overall layout */
 body {
     min-height: 100vh;
     margin: 0;
@@ -23,171 +28,203 @@ body {
     background: var(--bg-color);
 }
 
-.container,
-.book-cards,
-.card {
-    display: grid;
-}
-
 .container {
+    display: grid;
+    grid-template-rows: 0.5fr 0.3fr 5fr 0.3fr;
+
+    background: var(--bg-color);
     height: 100vh;
     width: 100vw;
-
-    grid-template-columns: 1fr 4fr;
-    grid-template-rows: 15% 1fr 7%;
-}
-
-header,
-.input-container,
-.form-input,
-#new-book,
-.cards-container,
-footer {
-    display: flex;
-}
-
-header,
-footer {
-    justify-content: center;
-}
-
-header,
-.input-container,
-#new-book,
-footer {
-    align-items: center;
 }
 
 header {
-    grid-column: 1 / span 2;
     grid-row: 1;
-    background: var(--dark-color);
-}
-
-h1 {
-    font-family: var(--secondary-font);
-    font-size: var(--lrg-font-size);
-}
-
-.input-container,
-.form-input {
-    flex-direction: column;
 }
 
 .input-container {
-    background: var(--light-color);
-    grid-column: 1;
-    grid-row: 2 / span 2;
-}
-
-form {
-    width: 95%;
-}
-
-form > ul {
-    width: 100%;
-    padding: 0;
-    list-style: none;
-}
-
-.form-input {
-    margin: 15px;
-}
-
-input,
-select,
-#submit-entry {
-    box-sizing: border-box;
-}
-
-#submit-entry {
-    margin-top: 10px;
-    padding: 5px;
-    background: var(--dark-color);
-    border: 2px solid var(--outline-color);
-}
-
-#new-book,
-.delete-btn,
-.toggle-read {
-    border: none;
-}
-
-#new-book {
-    height: 60px;
-    width: 150px;
-    background: none;
-    gap: 10px;
-    margin-top: 1rem;
-}
-
-#new-book img {
-    height: 50%;
-    width: auto;
+    grid-row: 2;
 }
 
 .cards-container {
-    padding: clamp(50px, 5%, 70px);
-}
-
-.book-cards {
-    width: 95%;
-    grid-area: 2 / 2;
-
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-template-rows: repeat(2, 1fr);
-    column-gap: 3%;
-    row-gap: 5%;
-}
-
-.card {
-    padding: 20px;
-    min-width: min-content;
-    background: var(--light-color);
-    border: 5px solid var(--outline-color);
-    
-    grid-template-areas:
-        "text close"
-        "text toggle";
-    justify-content: space-between;
-    align-items: baseline;
-}
-
-.info-container {
-    grid-area: text;
-}
-
-.delete-btn,
-.toggle-read {
-    height: 30px;
-    width: 30px;
-    background-size: cover;
-}
-
-.delete-btn {
-    background: url("../images/close.svg");
-    grid-area: close;
-}
-
-.toggle-read {
-    background: url("../images/checkbox-marked.svg");
-    grid-area: toggle;
-    align-self: flex-end;
-}
-
-.not-read {
-    background: url("../images/checkbox-marked-outline.svg");
+    grid-row: 3;
 }
 
 footer {
-    grid-row: 3;
-    grid-column: 1 / span 2;
+    grid-row: 4;
 }
 
-footer a {
-    padding: 0 5px;
+/* Styles for header */
+header {
+    background: var(--dark-color);
+    border-bottom: 5px solid var(--outline-color);
+}
+
+h1 {
+    font-size: var(--medium-font);
+    color: var(--bg-color);
+    text-align: center;
+}
+
+/* Styles for new book sidebar */
+.input-container {
+    background: var(--light-color);
+}
+
+#new-book {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap);
+
+    background: none;
+    border: none;
+    padding: var(--small);
+    width: 100%;
+}
+
+#new-book:hover {
+    cursor: pointer;
+}
+
+#new-book > img {
+    height: 30px;
+    width: 30px;
+}
+
+#new-book > span {
+    font-size: calc(var(--normal-font) + 3px);
+}
+
+/* Styles for form to add new entry */
+form > ul {
+    list-style: none;
+    padding: var(--small);
+    margin-top: - var(--small);
+    padding-top: - var(--small);
+}
+
+.form-input {
+    display: flex;
+    flex-direction: column;
+    padding: var(--gap) 0;
+}
+
+#submit-entry {
+    margin-top: var(--gap);
+}
+
+/* Styles for book entries */
+.book-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--small);
+    padding: var(--small);
+}
+
+.card {
+    display: grid;
+    grid-template-columns: 3fr 0.5fr;
+    grid-template-rows: 0.5fr 4fr;
+    align-items: end;
+
+    border: 3px solid var(--light-color);
+    padding: var(--small);
+}
+
+.info-container {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+}
+
+.delete-btn,
+.toggle-read,
+.not-read {
+    height: 30px;
+    background-position: 50%;
+    border: none;
+    filter: var(--svg-filter);
+}
+
+.delete-btn {
+    grid-column: 2;
+    grid-row: 1;
+
+    height: 30px;
+    background: url("../images/close.svg") no-repeat;
+}
+
+.toggle-read {
+    grid-column: 2;
+    grid-row: 2;
+
+    background: url("../images/checkbox-marked.svg") no-repeat;
+    align-self: end;
+}
+
+.not-read {
+    background: url("../images/checkbox-marked-outline.svg") no-repeat;
+}
+
+.delete-btn:hover,
+.toggle-read:hover,
+.not-read:hover {
+    cursor: pointer;
+}
+
+/* Styles for footer */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap);
+}
+
+.github-icon {
+    height: 30px;
+    width: 30px;
 }
 
 .hidden {
-    visibility: hidden;
+    display: none;
+}
+
+/* Styles for small devices */
+@media (min-width: 460px) {
+    .container {
+        grid-template-rows: 0.3fr 0.3fr 3fr 0.3fr;
+    }
+}
+
+/* Styles for tablets */
+@media (min-width: 768px) {
+    .container {
+        grid-template-columns: 1fr 4fr;
+        grid-template-rows: 0.4fr 4fr 0.4fr;
+    }
+
+    header {
+        grid-column: 1 / span 2;
+        grid-row: 1;
+    }
+
+    .input-container {
+        grid-column: 1;
+        grid-row: 2 / span 2;
+    }
+
+    .cards-container {
+        grid-column: 2;
+        grid-row: 2;
+        
+        padding: var(--small);
+    }
+
+    footer {
+        grid-column: 1 / span 2;
+        grid-row: 3;
+    }
+
+    .book-cards {
+        gap: calc(var(--small) * 1.5);
+    }
 }
