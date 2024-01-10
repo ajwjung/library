@@ -133,7 +133,7 @@ function checkForm() {
 }
 
 // Toggle form visibility
-newBookBtn.addEventListener("click", function (e) {
+newBookBtn.addEventListener("click", () => {
     bookForm.classList.toggle("hidden");
 })
 
@@ -147,6 +147,7 @@ submitBook.addEventListener("click", function (e) {
     }
 
     e.target.disabled = true;
+    bookForm.classList.add("hidden");
 })
 
 document.body.addEventListener("click", function (e) {
